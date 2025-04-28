@@ -9,7 +9,7 @@ const fetchUserRentals = async (token) => {
         authorization: `Bearer ${token}`,
       },
     };
-    const response = await axios.get(`/api/rentals`,options)
+    const response = await axios.get(`https://car-rental-app-5d25.onrender.com/api/rentals`,options)
     return response.data
  
 };
@@ -23,7 +23,7 @@ const fetchUserRental = async (rid,token) => {
         authorization: `Bearer ${token}`,
       },
     };
-    const response = await axios.get(`/api/rentals/${rid}`,options)
+    const response = await axios.get(`https://car-rental-app-5d25.onrender.com/api/rentals/${rid}`,options)
     return response.data
  
 };
@@ -35,7 +35,7 @@ const createRentals = async (formData, token) => {
         authorization: `Bearer ${token}`,
       },
     };
-    const response = await axios.post(`/api/rentals/${formData.id}`, formData, options);
+    const response = await axios.post(`https://car-rental-app-5d25.onrender.com/api/rentals/${formData.id}`, formData, options);
     console.log(response.data);
     
     return response.data;

@@ -3,7 +3,7 @@ import axios from "axios";
 
 // fetch cars user
 const fetchCars = async (page = 1, limit = 100) => {
-  const response = await axios.get(`/api/car?page=${page}&limit=${limit}`);
+  const response = await axios.get(`https://car-rental-app-5d25.onrender.com/api/car?page=${page}&limit=${limit}`);
   return response.data;
 };
 
@@ -15,7 +15,7 @@ const createCar = async (formData, token) => {
       authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.post("/api/admin/car", formData, options);
+  const response = await axios.post("https://car-rental-app-5d25.onrender.com/api/admin/car", formData, options);
   return response.data.car;
 };
 
@@ -26,7 +26,7 @@ const deleteCar = async (id, token) => {
       authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.delete("/api/admin/car/" + id , options); 
+  const response = await axios.delete("https://car-rental-app-5d25.onrender.com/api/admin/car/" + id , options); 
   return response.data.car;
 };
 
@@ -40,7 +40,7 @@ const update = async (id, formData, token) => {
     };
     
 
-    const response = await axios.put(`/api/admin/car/${id}`, formData, options)
+    const response = await axios.put(`https://car-rental-app-5d25.onrender.com/api/admin/car/${id}`, formData, options)
     return response.data.car;
   } catch (error) {
     console.error("Update error:", error.response?.data || error.message);
@@ -57,7 +57,7 @@ const fetchRentals = async (token) => {
         authorization: `Bearer ${token}`,
       },
     };
-    const response = await axios.get(`/api/admin/rentals`,options)
+    const response = await axios.get(`https://car-rental-app-5d25.onrender.com/api/admin/rentals`,options)
     const rental = response.data.users.filter((user)=> user.rentals.length > 0 )
     
     return rental;
@@ -74,7 +74,7 @@ const fetchReviews = async (token) => {
         authorization: `Bearer ${token}`,
       },
     };
-    const response = await axios.get(`/api/admin/reviews`,options)
+    const response = await axios.get(`https://car-rental-app-5d25.onrender.com/api/admin/reviews`,options)
   return response.data.userWithReviews
   } catch (error) {
     console.error("Update error:", error.response?.data || error.message);
@@ -85,7 +85,7 @@ const fetchReviews = async (token) => {
 // fetch car
 
 const fetchCar = async (id) => {
-  const response = await axios.get(`/api/car/${id}`);
+  const response = await axios.get(`https://car-rental-app-5d25.onrender.com/api/car/${id}`);
   return response.data;
 };
 
@@ -97,13 +97,13 @@ const fetchComment = async (id,token) => {
       authorization : `Bearer ${token}`
     }
   }
-  const response = await axios.get(`/api/car/${id}/reviews`,options);  
+  const response = await axios.get(`https://car-rental-app-5d25.onrender.com/api/car/${id}/reviews`,options);  
   return response.data;
 };
 
 // find car user
 const searchCar = async (query) => {
-  const response = await axios.get(`/api/car/search?query=${query}`);
+  const response = await axios.get(`https://car-rental-app-5d25.onrender.com/api/car/search?query=${query}`);
   return response.data;
 };
 
@@ -114,7 +114,7 @@ const createComment = async (formData, token) => {
       authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.post(`/api/car/${formData.id}/reviews/add`,formData,options);
+  const response = await axios.post(`https://car-rental-app-5d25.onrender.com/api/car/${formData.id}/reviews/add`,formData,options);
   return response.data;
 };
 
